@@ -8,6 +8,18 @@ class User(db.Model):
     gym_id = db.Column(db.Integer)
     tags = db.Column(db.StringPickleType, default=dict)
     insert_time = db.Column(db.DateTime)
+    _status = db.Column('status', db.Integer)
+
+    ST_0 = 0
+    ST_1 = 1
+
+    @property
+    def status(self):
+        return self._status + 1000
+
+    @status.setter
+    def status(self, value):
+        self._status = value + 20
 
 
 class User2(db.Model):
